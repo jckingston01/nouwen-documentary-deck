@@ -24,8 +24,8 @@ canvas#webgl{position:fixed;inset:0;z-index:0;display:block}
 .grain{position:fixed;inset:-50%;pointer-events:none;z-index:30;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.86 0 0 0 0 0.78 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");animation:gshift 2.4s steps(4) infinite}
 @keyframes gshift{0%{transform:translate(0,0)}25%{transform:translate(-5px,3px)}50%{transform:translate(3px,-4px)}75%{transform:translate(-2px,-5px)}100%{transform:translate(0,0)}}
 
-.vignette{position:fixed;inset:0;pointer-events:none;z-index:25;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.7) 100%);animation:vbreathe 22s ease-in-out infinite alternate}
-@keyframes vbreathe{from{background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.6) 100%)}to{background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,.75) 100%)}}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:25;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.5) 100%);animation:vbreathe 22s ease-in-out infinite alternate}
+@keyframes vbreathe{from{background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.4) 100%)}to{background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.55) 100%)}}
 
 .blackout{position:fixed;inset:0;background:#000;z-index:100;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
 .blackout.on{opacity:1;pointer-events:auto}
@@ -60,9 +60,9 @@ canvas#webgl{position:fixed;inset:0;z-index:0;display:block}
 
 /* ── Photos ── */
 .photo{position:relative;overflow:hidden;border:1px solid rgba(236,226,207,.06)}
-.photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.62) contrast(1.04) brightness(.86);transform:scale(1.05);transition:transform 48s linear}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.72) contrast(1.04) brightness(.95);transform:scale(1.05);transition:transform 48s linear}
 .slide.active .photo img{transform:scale(1)}
-.photo::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 180px 50px rgba(0,0,0,.5);pointer-events:none}
+.photo::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 120px 30px rgba(0,0,0,.3);pointer-events:none}
 .photo-full{width:min(1700px,92vw);height:min(900px,82vh)}
 .photo-hero{width:min(1500px,88vw);height:min(800px,76vh)}
 .photo-portrait{width:min(700px,40vw);height:min(880px,72vh);flex-shrink:0}
@@ -84,7 +84,7 @@ canvas#webgl{position:fixed;inset:0;z-index:0;display:block}
 .slide.active .climb-grid .ccard:nth-child(6){transition-delay:4s}
 .slide.active .climb-grid .ccard:nth-child(7){transition-delay:4.4s}
 .slide.active .climb-grid .ccard:nth-child(8){transition-delay:4.8s}
-.climb-grid .ccard img{width:100%;height:100%;object-fit:contain;padding:8px;filter:brightness(.8) saturate(.5)}
+.climb-grid .ccard img{width:100%;height:100%;object-fit:contain;padding:8px;filter:brightness(.92) saturate(.65)}
 .climb-grid .ccard.text-card{display:flex;align-items:center;justify-content:center;padding:12px}
 .climb-grid .ccard.text-card span{font-family:var(--serif);font-size:clamp(14px,1.4vw,22px);color:var(--cream-dim);text-align:center;line-height:1.2}
 
@@ -95,19 +95,12 @@ canvas#webgl{position:fixed;inset:0;z-index:0;display:block}
 .slide.active .film-card:nth-child(1){transition-delay:1.2s}
 .slide.active .film-card:nth-child(2){transition-delay:1.9s}
 .slide.active .film-card:nth-child(3){transition-delay:2.6s}
+.slide.active .film-card:nth-child(4){transition-delay:3.3s}
 .film-card .poster{width:clamp(180px,15vw,280px);aspect-ratio:2/3;overflow:hidden;border-radius:6px;border:1px solid rgba(236,226,207,.08);box-shadow:0 20px 50px -12px rgba(0,0,0,.6)}
-.film-card .poster img{width:100%;height:100%;object-fit:cover;filter:saturate(.55) brightness(.82);transition:filter .8s var(--ease),transform .8s var(--ease)}
-.film-card .poster:hover img{filter:saturate(.75) brightness(.92);transform:scale(1.03)}
+.film-card .poster img{width:100%;height:100%;object-fit:cover;filter:saturate(.70) brightness(.92);transition:filter .8s var(--ease),transform .8s var(--ease)}
+.film-card .poster:hover img{filter:saturate(.85) brightness(.98);transform:scale(1.03)}
 .film-card .poster-label{font-family:var(--sans);font-size:clamp(10px,.8vw,13px);letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
 
-/* ── Spinning globe ── */
-.globe-scene{perspective:900px;width:clamp(220px,20vw,360px);aspect-ratio:1;position:relative;flex-shrink:0}
-.globe-sphere{width:100%;height:100%;border-radius:50%;position:relative;background:radial-gradient(circle at 32% 28%,rgba(30,42,58,.7),rgba(8,12,20,.95) 72%);box-shadow:inset -24px -24px 50px rgba(0,0,0,.5),0 0 100px -30px rgba(100,136,170,.08),0 0 1px rgba(148,142,128,.3);overflow:hidden;animation:globe-rotate 28s linear infinite;transform-style:preserve-3d}
-.globe-meridian{position:absolute;inset:4%;border:1px solid rgba(148,142,128,.12);border-radius:50%;pointer-events:none}
-.globe-equator{position:absolute;left:0;right:0;top:50%;height:0;border-top:1px solid rgba(148,142,128,.15);transform:translateY(-50%)}
-.globe-parallel{position:absolute;left:50%;height:0;border-top:1px solid rgba(148,142,128,.08);transform:translateX(-50%)}
-.globe-highlight{position:absolute;top:12%;left:18%;width:28%;height:22%;border-radius:50%;background:radial-gradient(circle,rgba(200,184,154,.06),transparent 70%);pointer-events:none}
-@keyframes globe-rotate{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
 
 /* ── Nested frames (Russian doll) ── */
 .doll{position:relative;width:min(1400px,88vw);aspect-ratio:16/9}
@@ -119,19 +112,19 @@ canvas#webgl{position:fixed;inset:0;z-index:0;display:block}
 .doll .f:nth-child(4){inset:156px 240px;transition-delay:10s;border-color:rgba(236,226,207,.12)}
 .doll .f:nth-child(5){inset:208px 320px;transition-delay:13s;border-color:rgba(218,184,122,.3);background:radial-gradient(ellipse at center,rgba(30,20,10,.9),rgba(10,8,6,.95))}
 /* Image fills left 45% with soft fade to right */
-.doll .fimg{position:absolute;left:0;top:0;width:48%;height:100%;overflow:hidden}
+.doll .fimg{position:absolute;left:0;top:0;width:36%;height:100%;overflow:hidden}
 .doll .fimg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 50%,rgba(10,8,6,.9) 100%);pointer-events:none}
-.doll .fimg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.85) brightness(.5) contrast(1.15)}
+.doll .fimg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.75) brightness(.65) contrast(1.1)}
 /* Labels sit right side, vertically centered */
 .doll .flbl{position:absolute;right:clamp(12px,2vw,28px);top:50%;transform:translateY(-50%);text-align:right}
-.doll .flbl .fn{font-family:var(--sans);font-size:clamp(9px,.75vw,11px);letter-spacing:.22em;text-transform:uppercase;color:var(--warm);display:block;margin-bottom:5px}
-.doll .flbl .fd{font-family:var(--serif);font-size:clamp(14px,1.4vw,20px);color:var(--cream-dim);font-style:italic;line-height:1.3}
+.doll .flbl .fn{font-family:var(--sans);font-size:clamp(12px,1.1vw,16px);letter-spacing:.28em;text-transform:uppercase;color:var(--warm);display:block;margin-bottom:8px;font-weight:500}
+.doll .flbl .fd{font-family:var(--serif);font-size:clamp(18px,2vw,30px);color:var(--cream-dim);font-style:italic;line-height:1.3}
 /* Innermost frame — warm glow, centered text, no image */
 .doll .f:nth-child(5) .fimg{width:100%;opacity:.15}
 .doll .f:nth-child(5) .fimg::after{display:none}
 .doll .f:nth-child(5) .flbl{right:50%;top:50%;transform:translate(50%,-50%);text-align:center;width:90%}
-.doll .f:nth-child(5) .fn{color:var(--warm-bright);text-shadow:0 0 18px rgba(218,184,122,.5),0 0 40px rgba(218,184,122,.2);font-size:clamp(10px,.9vw,13px);margin-bottom:8px;letter-spacing:.28em}
-.doll .f:nth-child(5) .fd{font-size:clamp(16px,2vw,28px);color:rgba(236,226,207,.9);text-shadow:0 0 24px rgba(236,226,207,.15)}
+.doll .f:nth-child(5) .fn{color:var(--warm-bright);text-shadow:0 0 18px rgba(218,184,122,.5),0 0 40px rgba(218,184,122,.2);font-size:clamp(13px,1.2vw,17px);margin-bottom:10px;letter-spacing:.3em;font-weight:500}
+.doll .f:nth-child(5) .fd{font-size:clamp(20px,2.4vw,34px);color:rgba(236,226,207,.9);text-shadow:0 0 24px rgba(236,226,207,.15)}
 .nest-coda{margin-top:24px;font-family:var(--sans);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(184,163,134,.4);opacity:0;transition:opacity 3s var(--ease) 16s}
 .slide.active .nest-coda{opacity:1}
 
@@ -237,32 +230,6 @@ body.edit .edit-badge{display:block}
   </div>
 </div>
 
-<!-- 5b: Bouncing around the world -->
-<div class="slide" data-scene="dark" data-particles="still" data-cam="0,0,25,0">
-  <div style="display:flex;align-items:center;gap:clamp(40px,6vw,100px);justify-content:center">
-    <div class="globe-scene">
-      <div class="globe-sphere">
-        <div class="globe-meridian" style="transform:rotateY(0deg)"></div>
-        <div class="globe-meridian" style="transform:rotateY(30deg)"></div>
-        <div class="globe-meridian" style="transform:rotateY(60deg)"></div>
-        <div class="globe-meridian" style="transform:rotateY(90deg)"></div>
-        <div class="globe-meridian" style="transform:rotateY(120deg)"></div>
-        <div class="globe-meridian" style="transform:rotateY(150deg)"></div>
-        <div class="globe-equator"></div>
-        <div class="globe-parallel" style="top:28%;width:72%"></div>
-        <div class="globe-parallel" style="top:38%;width:86%"></div>
-        <div class="globe-parallel" style="top:62%;width:86%"></div>
-        <div class="globe-parallel" style="top:72%;width:72%"></div>
-        <div class="globe-highlight"></div>
-      </div>
-    </div>
-    <div class="reveal" style="display:flex;flex-direction:column;align-items:flex-start">
-      <div class="t-head">Bouncing around the world.</div>
-      <div class="t-body it dimmer" style="margin-top:24px;max-width:500px">Teaching. Writing. Searching.</div>
-    </div>
-  </div>
-</div>
-
 <!-- 6: The Climb -->
 <div class="slide" data-scene="dark" data-particles="up" data-cam="0,2,28,3" data-ladder="1">
   <div style="display:flex;align-items:center;width:100%;gap:clamp(24px,5vw,80px);padding:0 clamp(40px,6vw,120px)">
@@ -273,8 +240,8 @@ body.edit .edit-badge{display:block}
       <div class="t-body dim" style="margin-top:48px;max-width:500px;text-align:left">From the outside it looked like succeeding.</div>
     </div>
     <div class="climb-grid">
-      <div class="ccard text-card"><span>Penn</span></div>
-      <div class="ccard text-card"><span>Harvard Law</span></div>
+      <div class="ccard"><img src="photos/upenn.png" alt="UPenn"/></div>
+      <div class="ccard"><img src="photos/harvardlawschool.png" alt="Harvard Law"/></div>
       <div class="ccard"><img src="photos/climb-amg-real.png" alt="AMG"/></div>
       <div class="ccard"><img src="photos/climb-patheos-real.jpg" alt="Patheos"/></div>
       <div class="ccard"><img src="photos/climb-mitt-real.jpg" alt="Mitt"/></div>
@@ -407,16 +374,20 @@ body.edit .edit-badge{display:block}
     <div class="t-label dimmer" style="margin-bottom:48px">selected filmography</div>
     <div class="film-grid">
       <div class="film-card">
-        <div class="poster"><img src="photos/mitt-poster.jpg" alt="Mitt (2014)"/></div>
+        <div class="poster"><img src="photos/mittfilm.jpg" alt="Mitt (2014)"/></div>
         <span class="poster-label">Mitt</span>
       </div>
       <div class="film-card">
-        <div class="poster"><img src="photos/lastchanceu-poster.jpg" alt="Last Chance U"/></div>
+        <div class="poster"><img src="photos/lastchanceufilm.jpg" alt="Last Chance U"/></div>
         <span class="poster-label">Last Chance U</span>
       </div>
       <div class="film-card">
-        <div class="poster"><img src="photos/cheer-poster.jpg" alt="Cheer"/></div>
+        <div class="poster"><img src="photos/cheerfilm.webp" alt="Cheer"/></div>
         <span class="poster-label">Cheer</span>
+      </div>
+      <div class="film-card">
+        <div class="poster"><img src="photos/americassweetheartsfilm.jpg" alt="America's Sweethearts"/></div>
+        <span class="poster-label">America&rsquo;s Sweethearts</span>
       </div>
     </div>
   </div>
@@ -424,15 +395,15 @@ body.edit .edit-badge{display:block}
 
 <!-- 18b: Greg & Romney with the Mitt poster -->
 <div class="slide" data-scene="neutral" data-particles="still" data-cam="0,0,28,0">
-  <div class="photo photo-full">
-    <img src="photos/greg-mitt-poster.jpg" alt="Greg Whiteley and Mitt Romney with the Netflix documentary poster" style="object-fit:cover;object-position:50% 50%"/>
+  <div class="photo photo-hero">
+    <img src="photos/greg-mitt-poster.jpg" alt="Greg Whiteley and Mitt Romney with the Netflix documentary poster" style="object-fit:contain;object-position:50% 50%;background:#0a0806"/>
   </div>
 </div>
 
 <!-- 18c: Greg — on set filming -->
 <div class="slide" data-scene="neutral" data-particles="still" data-cam="0,0,28,0">
-  <div class="photo photo-full">
-    <img src="photos/greg-on-set.jpg" alt="Greg Whiteley on set with cameras" style="object-fit:cover;object-position:50% 50%"/>
+  <div class="photo" style="width:min(1000px,60vw);height:min(660px,60vh)">
+    <img src="photos/greg-on-set.jpg" alt="Greg Whiteley on set with cameras" style="object-fit:contain;object-position:50% 50%;background:#0a0806"/>
   </div>
 </div>
 
@@ -448,8 +419,8 @@ body.edit .edit-badge{display:block}
 <!-- 20: John and Greg — Sundance hero -->
 <div class="slide" data-scene="neutral" data-particles="still" data-cam="0,0,27,0">
   <div class="reveal" style="display:flex;flex-direction:column;align-items:center">
-    <div class="photo photo-full">
-      <img src="photos/john-greg-sundance-01.jpeg" alt="John and Greg at Sundance 2014" style="object-fit:cover;object-position:50% 50%"/>
+    <div class="photo" style="width:min(1000px,60vw);height:min(660px,60vh)">
+      <img src="photos/john-greg-sundance-01.jpeg" alt="John and Greg at Sundance 2014" style="object-fit:contain;object-position:50% 50%;background:#0a0806"/>
     </div>
     <div class="t-body dim" style="margin-top:24px;max-width:800px">Two friends, three years into a fifteen-year film &mdash; and neither of them knew it yet.</div>
   </div>
@@ -458,7 +429,7 @@ body.edit .edit-badge{display:block}
 <!-- 21: Park City — families after premiere -->
 <div class="slide" data-scene="neutral" data-particles="still" data-cam="0,0,27,0">
   <div class="photo photo-hero">
-    <img src="photos/john-greg-park-city-01.jpeg" alt="John and Greg with families, Park City" style="object-fit:cover;object-position:50% 50%"/>
+    <img src="photos/john-greg-park-city-01.jpeg" alt="John and Greg with families, Park City" style="object-fit:contain;object-position:50% 50%;background:#0a0806"/>
   </div>
 </div>
 
@@ -466,7 +437,7 @@ body.edit .edit-badge{display:block}
 <div class="slide" data-scene="neutral" data-particles="still" data-cam="0,0,27,0">
   <div class="reveal" style="display:flex;flex-direction:column;align-items:center">
     <div class="photo photo-hero">
-      <img src="photos/john-greg-families-bowling.jpeg" alt="John and Greg with sons" style="object-fit:cover;object-position:50% 50%"/>
+      <img src="photos/john-greg-families-bowling.jpeg" alt="John and Greg with sons" style="object-fit:contain;object-position:50% 50%;background:#0a0806"/>
     </div>
     <div class="t-body dim it" style="margin-top:24px;max-width:800px">Friendship was always the through-line. The film was the long way home.</div>
   </div>
@@ -495,10 +466,10 @@ body.edit .edit-badge{display:block}
 <div class="slide" data-scene="neutral" data-particles="still" data-cam="0,0,26,0">
   <div style="display:flex;gap:clamp(16px,3vw,48px);align-items:center;z-index:2">
     <div class="photo" style="width:min(640px,36vw);height:min(820px,68vh);flex-shrink:0">
-      <img src="photos/rembrandt-prodigal-full.jpg" alt="Rembrandt - The Return of the Prodigal Son" style="object-position:50% 40%;filter:saturate(.75) contrast(1.02) brightness(.9)"/>
+      <img src="photos/rembrandt-prodigal-full.jpg" alt="Rembrandt - The Return of the Prodigal Son" style="object-position:50% 40%;filter:saturate(.82) contrast(1.02) brightness(.95)"/>
     </div>
     <div class="photo" style="width:min(500px,28vw);height:min(820px,68vh);flex-shrink:0">
-      <img src="photos/rembrandt-prodigal-detail.jpg" alt="Detail - the father's hands" style="object-position:50% 55%;filter:saturate(.75) contrast(1.02) brightness(.9)"/>
+      <img src="photos/rembrandt-prodigal-detail.jpg" alt="Detail - the father's hands" style="object-position:50% 55%;filter:saturate(.82) contrast(1.02) brightness(.95)"/>
     </div>
   </div>
   <div class="t-body it" style="position:absolute;bottom:clamp(130px,17vh,210px);z-index:5;max-width:900px">He painted mercy because he needed mercy.</div>
@@ -636,7 +607,6 @@ body.edit .edit-badge{display:block}
 "\"The someone I am telling you about thought he was going to make this film for other people. He thought he was the messenger.\"",
 "\"He did not know that he was going to walk through his hero's story himself.\"",
 "\"He came from a hard family. He left at seventeen and never quite stopped running.\"",
-"\"Bouncing around the world. Teaching. Writing. Searching.\"",
 "\"He knew all the words. Grace. Mercy. Love. He just couldn't quite — feel them.\"",
 "\"It happened on a Sunday in late November. 2021.\"",
 "\"Cold. Overcast. The kind of New England day where the sun gives up by four.\"",
