@@ -719,7 +719,7 @@ for(let i=0;i<PARTICLE_COUNT;i++){
 }
 pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
 const pMat = new THREE.PointsMaterial({
-  color:0x3a3228, size:.35, map:ptTex, transparent:true, opacity:.4,
+  color:0x3a3228, size:.6, map:ptTex, transparent:true, opacity:.6,
   sizeAttenuation:true, blending:THREE.AdditiveBlending, depthWrite:false
 });
 const pts = new THREE.Points(pGeo,pMat);
@@ -854,7 +854,7 @@ function go(i){
   setDrift(s.dataset.particles||'still');
   const c=(s.dataset.cam||'0,0,30,0').split(',').map(Number);
   camTgt.x=c[0];camTgt.y=c[1];camTgt.z=c[2];camTgt.ly=c[3]||0;
-  tLadderOp=s.dataset.ladder==='1'?.18:0;
+  tLadderOp=s.dataset.ladder==='1'?.35:0;
 }
 function next(){if(si<slides.length-1)go(si+1)}
 function prev(){if(si>0)go(si-1)}
