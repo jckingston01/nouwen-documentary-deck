@@ -908,7 +908,6 @@ window.onYouTubeIframeAPIReady=function(){
     events:{
       onStateChange:function(e){
         if(e.data===YT.PlayerState.ENDED){
-          if(document.fullscreenElement)document.exitFullscreen();
           setTimeout(()=>next(),1500);
         }
       }
@@ -916,9 +915,10 @@ window.onYouTubeIframeAPIReady=function(){
   });
 };
 document.getElementById('yt-play').addEventListener('click',function(){
-  const w=document.getElementById('yt-wrap');
-  const fs=w.requestFullscreen||w.webkitRequestFullscreen;
-  if(fs)fs.call(w);
+  if(!document.fullscreenElement){
+    const fs=document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen;
+    if(fs)fs.call(document.documentElement);
+  }
   if(ytp&&ytp.playVideo)ytp.playVideo();
   this.style.display='none';
 });
