@@ -904,7 +904,15 @@ window.onYouTubeIframeAPIReady=function(){
   ytp=new YT.Player('yt-player',{
     width:'100%',height:'100%',
     videoId:'9b-tTZXISH8',
-    playerVars:{rel:0,modestbranding:1,playsinline:0,controls:1}
+    playerVars:{rel:0,modestbranding:1,playsinline:0,controls:1},
+    events:{
+      onStateChange:function(e){
+        if(e.data===YT.PlayerState.ENDED){
+          if(document.fullscreenElement)document.exitFullscreen();
+          setTimeout(()=>next(),1500);
+        }
+      }
+    }
   });
 };
 document.getElementById('yt-play').addEventListener('click',function(){
