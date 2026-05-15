@@ -287,7 +287,7 @@ body.edit .edit-badge{display:block}
 </div>
 
 <!-- 10: The room was thin -->
-<div class="slide" data-scene="cold" data-particles="fall" data-cam="0,0,36,0">
+<div class="slide" data-scene="cold" data-particles="crawl" data-cam="0,0,36,0">
   <div class="reveal" style="display:flex;flex-direction:column;align-items:center">
     <div class="t-head">The room was thin.</div>
     <div class="t-body it dimmer" style="margin-top:40px;max-width:800px">A thin one&hellip; for a life that had not been thin.</div>
@@ -401,14 +401,14 @@ body.edit .edit-badge{display:block}
 <!-- 18b: Greg & Romney with the Mitt poster -->
 <div class="slide" data-scene="neutral" data-particles="still" data-cam="0,0,28,0">
   <div class="photo photo-hero">
-    <img src="photos/greg-mitt-poster.jpg" alt="Greg Whiteley and Mitt Romney with the Netflix documentary poster" style="object-fit:cover;object-position:50% 50%"/>
+    <img src="photos/greg-mitt-poster.jpg" alt="Greg Whiteley and Mitt Romney with the Netflix documentary poster" style="object-fit:contain;object-position:50% 50%"/>
   </div>
 </div>
 
 <!-- 18c: Greg — on set filming -->
 <div class="slide" data-scene="neutral" data-particles="still" data-cam="0,0,28,0">
   <div class="photo" style="width:min(1100px,68vw);height:min(700px,65vh)">
-    <img src="photos/greg-on-set.jpg" alt="Greg Whiteley on set with cameras" style="object-fit:cover;object-position:50% 50%"/>
+    <img src="photos/greg-on-set.jpg" alt="Greg Whiteley on set with cameras" style="object-fit:contain;object-position:50% 50%"/>
   </div>
 </div>
 
@@ -425,7 +425,7 @@ body.edit .edit-badge{display:block}
 <div class="slide" data-scene="neutral" data-particles="still" data-cam="0,0,27,0">
   <div class="reveal" style="display:flex;flex-direction:column;align-items:center">
     <div class="photo" style="width:min(1100px,68vw);height:min(700px,65vh)">
-      <img src="photos/john-greg-sundance-01.jpeg" alt="John and Greg at Sundance 2014" style="object-fit:cover;object-position:50% 50%"/>
+      <img src="photos/john-greg-sundance-01.jpeg" alt="John and Greg at Sundance 2014" style="object-fit:contain;object-position:50% 50%"/>
     </div>
     <div class="t-body dim" style="margin-top:24px;max-width:800px">Two friends, three years into a fifteen-year film &mdash; and neither of them knew it yet.</div>
   </div>
@@ -434,7 +434,7 @@ body.edit .edit-badge{display:block}
 <!-- 21: Park City — families after premiere -->
 <div class="slide" data-scene="neutral" data-particles="still" data-cam="0,0,27,0">
   <div class="photo photo-hero">
-    <img src="photos/john-greg-park-city-01.jpeg" alt="John and Greg with families, Park City" style="object-fit:cover;object-position:50% 50%"/>
+    <img src="photos/john-greg-park-city-01.jpeg" alt="John and Greg with families, Park City" style="object-fit:contain;object-position:50% 50%"/>
   </div>
 </div>
 
@@ -442,7 +442,7 @@ body.edit .edit-badge{display:block}
 <div class="slide" data-scene="neutral" data-particles="still" data-cam="0,0,27,0">
   <div class="reveal" style="display:flex;flex-direction:column;align-items:center">
     <div class="photo photo-hero">
-      <img src="photos/john-greg-families-bowling.jpeg" alt="John and Greg with sons" style="object-fit:cover;object-position:50% 50%"/>
+      <img src="photos/john-greg-families-bowling.jpeg" alt="John and Greg with sons" style="object-fit:contain;object-position:50% 50%"/>
     </div>
     <div class="t-body dim it" style="margin-top:24px;max-width:800px">Friendship was always the through-line. The film was the long way home.</div>
   </div>
@@ -777,6 +777,7 @@ function setDrift(b){
   if(dropTimer){clearTimeout(dropTimer);dropTimer=null}
   switch(b){
     case'still':tDrift={x:0,y:0,z:0};break;
+    case'crawl':tDrift={x:.005,y:-.02,z:.003};break;
     case'up':tDrift={x:0,y:.5,z:0};break;
     case'fall':tDrift={x:.04,y:-.15,z:.02};break;
     case'lateral':tDrift={x:.4,y:0,z:.08};break;
@@ -785,7 +786,7 @@ function setDrift(b){
       tDrift={x:.02,y:-.06,z:.01};
       dropTimer=setTimeout(()=>{
         tDrift={x:.15,y:-1.8,z:.1};
-      },3500);
+      },5000);
       break;
     default:tDrift={x:0,y:0,z:0};
   }
